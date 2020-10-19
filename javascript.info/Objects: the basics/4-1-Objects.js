@@ -111,3 +111,98 @@ obj2.__proto__ = 5;
 alert(obj2.__proto__); // [object Object]
 
 //-
+
+let user8 = {};
+
+alert( user8.noSuchProperty === undefined );
+
+// "key" in object;
+
+let user9 = { name: "John", age: 30 };
+
+alert( "age" in user );
+alert( "blabla" in user );
+
+let key1 = "age";
+alert( key1 in user9 );
+
+let obj3 = {
+	test: undefined
+};
+
+alert( obj3.test );
+alert( "test" in obj );
+
+//- for in
+let handsomeBoy = {
+	name: "Michael",
+	age: 18,
+	isAdmin: true,
+	cm: 30,
+	soBigSoLong: true
+};
+
+for ( let key in handsomeBoy ) {
+	// keys
+	alert(key);
+	// values
+	alert( handsomeBoy[key] );
+}
+
+
+//-Tip
+alert( String(Math.trunc(Number("49"))) );
+alert( String(Math.trunc(Number("+49"))) );
+alert( String(Math.trunc(Number("1.2"))) );
+
+//-Tip: 電話問題用, 用"+"前綴來排序
+
+//-Task:
+// #1
+let userInformation = {};
+userInformation.name = "John";
+userInformation.surname = "Smith";
+
+userInformation.name = "Pete";
+delete userInformation.name;
+
+// #2
+
+function isEmpty(value) {
+	return value && Object.keys(value).length === 0 && value.constructor === Object;
+}
+
+// #Reference
+// - https://www.samanthaming.com/tidbits/94-how-to-check-if-object-is-empty/
+// - https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
+
+// #3
+
+let salaries = {
+	John: 100,
+	Ann: 160,
+	Pete: 130
+}
+
+let sum = 0;
+for ( let money in salaries ) {
+	sum += salaries[money];
+}
+
+alert(sum);
+
+// #4
+
+let menu = {
+	width: 200,
+	height: 300,
+	title: "My menu"
+};
+
+function multiplyNumber(obj) {
+	for ( let key in obj ) {
+		if ( typeof obj[key] == "number" ) {
+			obj[key] *= 2;
+		}
+	}
+}
