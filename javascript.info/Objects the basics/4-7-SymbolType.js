@@ -1,4 +1,5 @@
 // - Symbol type
+// 不重要吧
 
 let id1 = Symbol("id");
 
