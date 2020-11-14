@@ -1,6 +1,7 @@
 // 5-3-Strings
 
 const { Str } = require("prelude-ls");
+const { func } = require("prop-types");
 const { Alert } = require("react-native");
 
 let singleString = 'single-quoted';
@@ -89,7 +90,6 @@ alert( 'Interface'[0].toLowerCase() );
 
 let str4 = "Widget with id";
 
-
 alert( str4.indexOf('Widget') ); //0
 alert( str4.indexOf('widget') ); // -1
 
@@ -151,6 +151,13 @@ alert( str7.slice(-4, -1) );
 alert( str7.substring(2, 6) );
 alert( str7.substring(6, 2) );
 
+//
+alert( str7.slice(2, 6) ); // "ring"
+alert( str7.slice(6, 2) ); // ""
+
+alter( str7.substr(2, 4) );
+alert( str7.substr(-4, 2) );
+
 // slice(start, end)
 // substring(start, end)
 // substr(start, length)
@@ -169,3 +176,57 @@ alter(str8);
 
 // -
 alert( 'Österreich'.localeCompare('Zealand') ); // -1
+
+//- 2字節
+alert( '𝒳'.length );
+alert( '😂'.length );
+alert( '𩷶'.length );
+
+alter( 'S\u0307' );
+
+alter( "S\u0307\u0323".normalize() ==  "S\u0323\u0307".normalize());
+
+alter( "S\u0307\u0323".normalize().length );
+alert( "S\u0307\u0323".normalize() == "\u1e68" );
+
+//- task
+//-1
+function ucFirst(str) {
+	if (!str) return str;
+	return str[0].toUpperCase();
+}
+
+alert( ucFirst("join") );
+
+//-2
+// function checkSpam(str) {
+// 	if ((str.toLowerCase.indexOf("viagra") == -1 ) || (str.toLowerCase.indexOf("xxx") == -1 )) {
+// 		return true;
+// 	} else {
+// 		return false;
+// 	}
+// }
+function checkSpam(str) {
+	let lowerStr = str.toLowerCase();
+
+	return lowerStr.includes("viagra") || lowerStr.includes("xxx")
+}
+//-3
+// function truncate(str, maxlength) {
+// 	let strLengthNumber = str.length;
+// 	if (strLengthNumber > maxlength) {
+// 		return str.substring(0, maxlength) + "...";
+// 	} else {
+// 		return str.substring(0, strLengthNumber);
+// 	}
+// }
+
+function truncate(str, maxlength) {
+	return (str.length > maxlength) ?
+		str.slice(0, maxlength - 1) + "..." : str;
+}
+
+//-4
+function extractCurrencyValue(str) {
+	return +str.slice(1);
+}
