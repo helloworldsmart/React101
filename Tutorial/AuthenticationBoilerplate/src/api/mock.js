@@ -1,3 +1,5 @@
+import { getToken } from './token';
+
 const mockSuccess = (value) => {
   return new Promise((resolve) => {
 		setTimeout(() => resolve(value), 2000);
@@ -32,10 +34,12 @@ export const createAccount = (email, password, shouldSucceed = true) => {
 
 const getAuthenticationToken = () => "successful_fake_token";
 
-export const getUsers = (shouldSucceed = true) => {
-	const token = getAuthenticationToken();
+// shouldSucceed = true
+export const getUsers = async () => {
+	// const token = getAuthenticationToken();
+	const token = await getToken();
 
-	if (!shouldSucceed) {
+	if (token !== 'successful_fake_token') {
 		return mockFailure({ error: 401, message: 'Invaild Request' });
 	}
 
@@ -45,7 +49,7 @@ export const getUsers = (shouldSucceed = true) => {
 				email: 'test@test.ca',
 			},
 			{
-				email: 'test2@test.ca',
+				email: 'test@test.ca',
 			},
 		],
 	});
