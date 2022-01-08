@@ -71,3 +71,53 @@ for (let key in fruitsBag) {
 let gyFruits = [];
 gyFruits[78] = "Durian"
 alert( gyFruits.length );
+
+// 
+let matrix = [
+	[1, 2, 3],
+	[4, 5, 6],
+	[7, 8, 9],
+];
+
+alert( matrix[0][1] ) // 2
+
+//- task
+//-1
+let fruits = ["Apples", "Pear", "Orange"]
+
+let shoppingCart = fruits;
+shoppingCart.push("Banana")
+
+console.log( fruits.length ) // 4
+
+//-2
+let styles = ["Jazz", "Blues"]
+styles.push("Rock-n-Roll")
+// styles[(styles.length / 2) - 1] = "Classics" // My answer
+styles[Math.floor((styles.length - 1) / 2)] = "Classics"
+styles.shift()
+styles.unshift("Rap", "Reggae")
+
+//-3
+
+//-4
+function sumInput() {
+	let numbers = [];
+	while (true) {
+		let value = prompt("A number please?", 0);
+
+		if (value === "" || value === null || !isFinite(value)) break;
+		numbers.push(+value)
+	}
+
+	let sum = 0;
+	for (let number of numbers) {
+		sum += number
+	}
+	return sum
+}
+
+alert( sumInput() )
+
+//-5
+
